@@ -1,0 +1,42 @@
+import random
+
+def play():
+    score_user = 0
+    score_computer = 0
+    print("**WELCOME TO THE GAME**")
+
+    while True:
+        user = input("What's your choice? 'r' for rock, 'p' for paper, 's' for scissors, 'q' to quit\n")
+        if user == 'q':
+            break
+        computer = random.choice(['r', 'p', 's'])
+        print(computer)
+
+        print(f"\nYou chose {gett_choice(user)}, computer chose {gett_choice(computer)}.\n")
+
+        if user == computer:
+            print(f"Both players selected {gett_choice(user)}. It's a tie!")
+        elif is_win(user, computer):
+            print("You win!")
+            score_user += 1
+        else:
+            print("You lose!")
+            score_computer += 1
+
+        print(f"Score - You: {score_user}, Computer: {score_computer}\n")
+
+def is_win(player, opponent):
+    # return true if player wins
+    # r > s, s > p, p > r
+    if (player == 'r' and opponent == 's') or (player == 's' and opponent == 'p') or (player == 'p' and opponent == 'r'):
+        return True
+
+def gett_choice(choice):
+    if choice == 'r':
+        return 'Rock'
+    elif choice == 'p':
+        return 'Paper'
+    elif choice == 's':
+        return 'Scissors'
+
+play()
